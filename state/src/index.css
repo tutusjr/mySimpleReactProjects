@@ -1,0 +1,43 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.courses{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: fit-content;
+  width: fit-content;
+  gap: 20px;
+  padding: 0px 50px;
+}
+
+.courses img{
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 30px;
+}
+
+.button{
+  padding: 20px;
+  display: flex;
+  font-size: 30px;
+  cursor: pointer;
+  margin: 20px auto;
+  border-radius: 30px;
+  background-color: navy;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.button:hover{
+  background-color: blue;
+}
+
+.button:active{
+  transform: scale(0.93);
+  transition: 0.5s ease;
+}

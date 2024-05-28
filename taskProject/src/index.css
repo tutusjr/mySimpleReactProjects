@@ -1,0 +1,143 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+}
+
+.gorevler-title{
+  text-align: center;
+}
+
+.create{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.input{ 
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  outline: none;
+  width: 100%;
+}
+
+.text{
+  height: 100px;
+  resize: none;
+  width: 100%;
+}
+
+.create-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.button{
+  width: 400px;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  margin: 10px 0px;
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+.task-list-container{
+  gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-show{
+  display: flex;
+  width: 300px;
+  min-height: 350px;
+  border: 2px solid green;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.show-title-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.task-input{
+  width: 100%;
+  padding: 10px;
+  gap: 10px;
+}
+
+.textarea{
+  word-wrap: break-word;
+  overflow: auto;
+  height: 100px;
+}
+
+
+.task-button{
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  outline: none;
+  width: 100px;
+  border: none;
+  cursor: pointer;
+  padding:10px;
+  border-radius: 10px;
+}
+
+.button-container{
+  gap: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+
+.update-button{
+  background-color: blue;
+}
+
+.update-container{
+  width: 100%;
+}
+
+.edit-button{
+  background-color: blueviolet;
+  width: 100%;
+}
+
+.task-input-container{
+  width: 100%;
+}

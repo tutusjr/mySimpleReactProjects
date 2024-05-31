@@ -1,18 +1,14 @@
+import TaskCreated from "./TaskCreated";
+import { useContext } from "react";
+import TaskContext from "../../context/TaskContext";
+export default function TaskList() {
+  const { tasks } = useContext(TaskContext);
 
-import PropTypes from 'prop-types'
-import TaskCreated from './TaskCreated'
-export default function TaskList({tasks, onDelete, updatedParams}) {
   return (
-    <div className='task-list-container'>
-        {tasks.map((item, index) => (
-               <TaskCreated key={index} task={item} onDelete={onDelete} updatedParams={updatedParams}/>
-        ))}
+    <div className="task-list-container">
+      {tasks.map((item, index) => (
+        <TaskCreated key={index} task={item} />
+      ))}
     </div>
-  )
-}
-
-TaskList.propTypes = {
-  tasks: PropTypes.array,
-  onDelete: PropTypes.func,
-  updatedParams: PropTypes.func
+  );
 }

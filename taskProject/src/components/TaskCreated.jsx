@@ -1,27 +1,20 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+
 import TaskCreate from "./TaskCreate";
+import { useContext } from "react";
+import TaskContext from "../../context/TaskContext";
 
-export default function TaskCreated({ task, onDelete, updatedParams }) {
-  const [edit, setEdit] = useState(false);
+export default function TaskCreated({ task }) {
+  const { deleteTask, editClick, edit, updatedSubmit } = useContext(TaskContext);
   const deleteClick = () => {
-    onDelete(task.id);
+    // onDelete(task.id);
+    deleteTask(task.id);
   };
-
-  const handleSubmit = (id,updatedTitle,updatedDesc) => {
-    setEdit(false);
-    updatedParams(id,updatedTitle,updatedDesc);
-  }
-
-  const editClick = () => {
-    setEdit(!edit);
-  };
-  console.log(edit)
   return (
     <div className="task-show">
       {edit ? (
         <>
-          <TaskCreate task={task} onUpdate={true} updated={handleSubmit}/>
+          <TaskCreate task={task} onUpdate={editClick} updated={updatedSubmit} />
         </>
       ) : (
         <>
@@ -50,5 +43,5 @@ export default function TaskCreated({ task, onDelete, updatedParams }) {
 TaskCreated.propTypes = {
   task: PropTypes.object,
   onDelete: PropTypes.func,
-  updatedParams: PropTypes.func
+  updatedParams: PropTypes.func,
 };

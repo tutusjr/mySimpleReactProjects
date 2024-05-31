@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import TaskContext from "../../context/TaskContext";
 import PropTypes from "prop-types";
 
-useState;
-export default function TaskCreate({ create, task, onUpdate, updated }) {
+export default function TaskCreate({ task, onUpdate , updated }) {
+
+  const { createTask } = useContext(TaskContext);
+
   const [taskInput, setTaskInput] = useState(task ? task.taskInput : "");
   const [taskTextarea, setTaskTextarea] = useState(
     task ? task.taskTextarea : ""
@@ -13,7 +16,7 @@ export default function TaskCreate({ create, task, onUpdate, updated }) {
     if (onUpdate) {
       updated(task.id, taskInput, taskTextarea);
     } else {
-      create(taskInput, taskTextarea);
+      createTask(taskInput, taskTextarea);
     }
     setTaskInput("");
     setTaskTextarea("");
@@ -22,7 +25,7 @@ export default function TaskCreate({ create, task, onUpdate, updated }) {
   return (
     <>
       {onUpdate ? (
-        <form className="update-container">
+        <form className="update-container" onSubmit={handleSubmit}>
           <div className="task-input-container">
             <label className="create" htmlFor="task">
               <h3>Taski guncelle</h3>
@@ -48,7 +51,10 @@ export default function TaskCreate({ create, task, onUpdate, updated }) {
               ></textarea>
             </label>
           </div>
-          <button type="submit" onClick={handleSubmit} className="button edit-button">
+          <button
+            type="submit"
+            className="button edit-button"
+          >
             Guncelle
           </button>
         </form>
@@ -91,9 +97,7 @@ export default function TaskCreate({ create, task, onUpdate, updated }) {
 }
 
 TaskCreate.propTypes = {
-  create: PropTypes.func,
   task: PropTypes.object,
   onUpdate: PropTypes.func,
   updated: PropTypes.func,
-  taskTextarea: PropTypes.string, // Add this line
 };

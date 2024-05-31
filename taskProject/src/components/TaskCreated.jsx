@@ -1,14 +1,27 @@
 import PropTypes from "prop-types";
 
 import TaskCreate from "./TaskCreate";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import TaskContext from "../../context/TaskContext";
 
 export default function TaskCreated({ task }) {
-  const { deleteTask, editClick, edit, updatedSubmit } = useContext(TaskContext);
+
+  const [edit, setEdit] = useState(false)
+
+  const { deleteTask, editTaskByID } = useContext(TaskContext);
   const deleteClick = () => {
     // onDelete(task.id);
     deleteTask(task.id);
+  };
+
+  const updatedSubmit = (id, updatedTitle, updatedDesc) => {
+    setEdit(false);
+    // updatedParams(id,updatedTitle,updatedDesc);
+    editTaskByID(id, updatedTitle, updatedDesc);
+  };
+
+  const editClick = () => {
+    setEdit(!edit);
   };
   return (
     <div className="task-show">

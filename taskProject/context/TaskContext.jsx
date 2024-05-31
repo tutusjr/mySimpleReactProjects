@@ -1,13 +1,13 @@
 import { createContext } from "react";
 import { useState } from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
 
 const TaskContext = createContext();
 
 function TaskProvider({ children }) {
-  
+
   const [tasks, setTasks] = useState([]);
-  const [edit, setEdit] = useState(false);
 
   const createTask = (taskInput, taskTextarea) => {
     axios
@@ -53,15 +53,6 @@ function TaskProvider({ children }) {
     });
   };
 
-  const updatedSubmit = (id, updatedTitle, updatedDesc) => {
-    setEdit(false);
-    // updatedParams(id,updatedTitle,updatedDesc);
-    editTaskByID(id, updatedTitle, updatedDesc);
-  };
-  const editClick = () => {
-    setEdit(!edit);
-  };
-
 
   const sharedValuesAndMethods = {
     tasks,
@@ -69,12 +60,13 @@ function TaskProvider({ children }) {
     deleteTask,
     editTaskByID,
     fetchTasks,
-    editClick,
-    updatedSubmit,
-    edit
   };
   return <TaskContext.Provider value={sharedValuesAndMethods}>{children}</TaskContext.Provider>;
 }
 
 export { TaskProvider };
 export default TaskContext;
+
+TaskProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

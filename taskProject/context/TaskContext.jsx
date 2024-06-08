@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 const TaskContext = createContext();
 
 function TaskProvider({ children }) {
-
   const [tasks, setTasks] = useState([]);
 
   const createTask = (taskInput, taskTextarea) => {
@@ -53,7 +52,6 @@ function TaskProvider({ children }) {
     });
   };
 
-
   const sharedValuesAndMethods = {
     tasks,
     createTask,
@@ -61,7 +59,11 @@ function TaskProvider({ children }) {
     editTaskByID,
     fetchTasks,
   };
-  return <TaskContext.Provider value={sharedValuesAndMethods}>{children}</TaskContext.Provider>;
+  return (
+    <TaskContext.Provider value={sharedValuesAndMethods}>
+      {children}
+    </TaskContext.Provider>
+  );
 }
 
 export { TaskProvider };

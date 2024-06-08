@@ -1,11 +1,10 @@
-import { useEffect, useContext} from "react";
+import { useEffect, useContext } from "react";
 import "./App.css";
 import Courses from "./components/Courses";
 import Loading from "./components/Loading";
 import CourseContext from "../context/CourseContext";
 
 function App() {
-
   const { courses, fetchCourses, loading } = useContext(CourseContext);
 
   useEffect(() => {
@@ -17,7 +16,18 @@ function App() {
       {loading ? (
         <Loading />
       ) : (
-        <Courses courses={courses} />
+        <>
+          {courses.length === 0 ? (
+            <div className="refresh">
+              <h1>Kurs kalmadi</h1>
+              <button className="button" onClick={fetchCourses}>
+                Yenile
+              </button>
+            </div>
+          ) : (
+            <Courses courses={courses} />
+          )}
+        </>
       )}
     </>
   );

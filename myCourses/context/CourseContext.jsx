@@ -7,17 +7,14 @@ function CourseProvider({ children }) {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchCourses = () => {
-    axios.get("http://localhost:3000/courses")
-      .then((response) => {
-        setCourses(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.log(error);
-      });
-      
+  const fetchCourses = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/courses");
+      setCourses(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const deletebyId = (id) => {
     // axios.delete("http://localhost:3000/courses/" + id);
